@@ -1,11 +1,67 @@
-tabuleiro = [
-    [' ', '|', '0', '1', '2', '3', '4', '5'],
-    ['-', '/', '-', '-', '-', '-', '-', '-'],
-    ['0', '|', 'A', 'B', 'C', 'D', 'E', 'F'],
-    ['1', '|', 'A', 'B', 'C', 'D', 'E', 'F'],
-    ['2', '|', 'G', 'H', 'I', 'J', 'L', 'M'],
-    ['3', '|', 'G', 'H', 'I', 'J', 'L', 'M']
+import random
+tabuleiroDefault = [
+    [' ', '|', '0', '1', '2', '3', '4', '5', '6', '7'],
+    ['-', '/', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['0', '|'],
+    ['1', '|'],
+    ['2', '|'],
+    ['3', '|'],
+    ['4', '|']
 ]
+
+tabuleiro = []
+
+duplas8 = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H']
+duplas12 = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'J', 'L', 'L', 'M', 'M']
+duplas20 = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'J', 'L', 'L', 'M', 'M',
+'N', 'N', 'O', 'O', 'P', 'P', 'Q', 'Q', 'R', 'R', 'S', 'S', 'T', 'T', 'U', 'U']
+
+def gerarTabuleiro8():
+    random.shuffle(duplas8)
+    tabuleiro[0] = tabuleiroDefault[0][0:5]
+    tabuleiro[1] = tabuleiroDefault[1][0:5]
+    tabuleiro[2] = tabuleiroDefault[2]
+    tabuleiro[3] = tabuleiroDefault[3]
+    tabuleiro[4] = tabuleiroDefault[4]
+    tabuleiro[5] = tabuleiroDefault[5]
+
+    linhas = [duplas8[0:3], duplas8[4:7], duplas8[8:11], duplas8[12:15]]
+
+    for idx, linha in linhas:
+        count = 2
+        for peca in linha:
+            tabuleiro[idx + 2][count] = peca
+            count++
+
+def gerarTabuleiro12():
+    random.shuffle(duplas12)
+    tabuleiro[0] = tabuleiroDefault[0][0:7]
+    tabuleiro[1] = tabuleiroDefault[1][0:7]
+    tabuleiro[2] = tabuleiroDefault[2]
+    tabuleiro[3] = tabuleiroDefault[3]
+    tabuleiro[4] = tabuleiroDefault[4]
+    tabuleiro[5] = tabuleiroDefault[5]
+
+    linhas = [duplas12[0:5], duplas12[6:11], duplas12[12:17], duplas12[18:23]]
+
+    for idx, linha in linhas:
+        count = 2
+        for peca in linha:
+            tabuleiro[idx + 2][count] = peca
+            count++
+
+def gerarTabuleiro20():
+    random.shuffle(duplas20)
+    tabuleiro = tabuleiroDefault
+    linhas = [duplas20[0:7], duplas20[8:15], duplas20[16:23], duplas20[24:31], duplas20[32, 39]]
+
+    for idx, linha in linhas:
+        count = 2
+        for peca in linha:
+            tabuleiro[idx + 2][count] = peca
+            count++
+        
+
 
 def fazerJogada():
     input1 = input('Digite as coordenadas da primeira peca(x,y): ')
