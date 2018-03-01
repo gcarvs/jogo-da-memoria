@@ -215,7 +215,7 @@ while True:
     dificuldade = socket_cliente.recv(1024)
     setDificuldade(dificuldade.decode('ascii'))
     while not acabouJogo():
-        time.sleep(6)
+        time.sleep(2)
         socket_cliente.send(printarTabuleiro().encode('ascii'))
         fazerJogada()
     socket_cliente.send('O jogo acabou'.encode('ascii'))
